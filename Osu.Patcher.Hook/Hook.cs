@@ -7,7 +7,6 @@ using System.Runtime.InteropServices;
 using HarmonyLib;
 using JetBrains.Annotations;
 using Osu.Patcher.Hook.Patches;
-using Osu.Performance;
 using Osu.Stubs.Wrappers;
 using Osu.Utils;
 
@@ -16,7 +15,7 @@ namespace Osu.Patcher.Hook;
 [UsedImplicitly]
 public static class Hook
 {
-    private const string GithubUrl = "https://github.com/rushiiMachine/osu-patcher";
+    private const string GithubUrl = "https://github.com/R3dWolfie/R3DCatchRelaxPatcher";
     private static Harmony _harmony = null!;
 
     /// <summary>
@@ -35,7 +34,7 @@ public static class Hook
         try
         {
             Notifications.ShowMessage(
-                "Loading osu!patcher...",
+                "Loading R3DCatch Patcher...",
                 NotificationColor.Neutral,
                 3000);
         }
@@ -47,18 +46,6 @@ public static class Hook
 #if DEBUG
         ConsoleHook.InitializeConsoleOutput();
         DebugHook.Initialize();
-
-        try
-        {
-            // MSBuild is flimsy with building rosu-ffi on up-to-date builds, try linking early
-            Marshal.PrelinkAll(typeof(Native));
-        }
-        catch (Exception e)
-        {
-            Console.WriteLine($"MSBuild broke again; clean & rebuild: {e}");
-            ShowErrorNotification();
-            return 0;
-        }
 #else
         ConsoleHook.InitializeLogOutput(osuDir);
 #endif
@@ -70,14 +57,14 @@ public static class Hook
             PatchOptions = Patches.PatchOptions.CreateAllPatchOptions().ToList();
             PatchOptions.Do(options => options.Load(settings));
 
-            _harmony = new Harmony("osu!patcher");
+            _harmony = new Harmony("r3dcatch-patcher");
             InitializePatches(_harmony);
 
             // Forcefully reload options to allow patches to inject new options
             OptionsUtils.ReloadOptions();
 
             Notifications.ShowMessage(
-                "osu!patcher initialized!",
+                "R3DCatch Patcher initialized!",
                 NotificationColor.Neutral,
                 5000,
                 () => { Process.Start(GithubUrl); }
@@ -126,7 +113,7 @@ public static class Hook
         try
         {
             Notifications.ShowMessage(
-                "osu!patcher experienced an error! Click to report.",
+                "R3DCatch Patcher experienced an error! Click to report.",
                 NotificationColor.Error,
                 20000,
                 () => { Process.Start($"{GithubUrl}/issues"); });

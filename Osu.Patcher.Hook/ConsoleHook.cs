@@ -14,7 +14,7 @@ namespace Osu.Patcher.Hook;
 // FIXME: make flushing async (flushing on main thread might cause mini lagspikes)
 internal static class ConsoleHook
 {
-    private const string LogFilename = "osu!patcher.log";
+    private const string LogFilename = "r3dcatch-patcher.log";
     private static volatile bool _consoleInitialized;
 
     [DllImport("kernel32.dll")]

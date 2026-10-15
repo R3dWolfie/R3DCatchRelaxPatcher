@@ -12,7 +12,7 @@ internal class DebugHook : TraceListener
     {
     }
 
-    public override string Name => "osu!patcher";
+    public override string Name => "R3DCatch Patcher";
 
     public static void Initialize() => Debug.Listeners.Add(new DebugHook());
 

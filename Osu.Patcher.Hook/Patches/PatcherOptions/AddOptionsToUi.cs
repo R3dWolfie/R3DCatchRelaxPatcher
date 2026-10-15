@@ -33,7 +33,7 @@ internal static class AddOptionsToUi
         // https://fontawesome.com/icons/eye-dropper?f=classic&s=solid
         const int fontAwesomeSyringe = 0xF1FB;
 
-        var osuPatcherString = AddOsuString("OsuPatcher", "osu!patcher");
+        var osuPatcherString = AddOsuString("OsuPatcher", "R3DCatch Patcher");
         var categoryChildren = new[]
         {
             CreatePatcherSectionOption(),

@@ -2,7 +2,6 @@ using System;
 using System.Diagnostics;
 using System.IO;
 using System.Xml.Serialization;
-using Osu.Patcher.Hook.Patches.LivePerformance;
 
 namespace Osu.Patcher.Hook;
 
@@ -12,7 +11,7 @@ namespace Osu.Patcher.Hook;
 [Serializable]
 public class Settings
 {
-    private const string OptionsFilename = "osu!patcher.xml";
+    private const string OptionsFilename = "r3dcatch-patcher.xml";
     private static readonly XmlSerializer Serializer = new(typeof(Settings));
 
     /// <summary>
@@ -72,9 +71,6 @@ public class Settings
     #region Options
 
     public bool EnableModAudioPreview { get; set; } = true;
-    public bool ShowPerformanceInGame { get; set; } = true;
-    public bool ShowPerformanceOnLeaderboard { get; set; } = true;
-    public PerformanceCalculatorType PerformanceCalculator { get; set; } = PerformanceCalculatorType.AkatsukiLimited;
     
     #endregion
 }
